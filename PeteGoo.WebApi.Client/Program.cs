@@ -20,7 +20,6 @@ namespace PeteGoo.WebApi.Client {
             // Perform Query
             new PeopleContext(new Uri("http://ipv4.fiddler:14061/api/People"), wireFormat)
                 .People
-                .Where(model => model.Id == 1)
                 .Where(model => model.FirstName.StartsWith("Pe"))
                 .ToList()
                 .ForEach(item => {
