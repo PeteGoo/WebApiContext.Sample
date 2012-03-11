@@ -1,0 +1,3 @@
+Shows how to create a DataServiceContext style client API for Queryable resources on an ASP.Net Web API. 
+
+Supports LINQ querying on the client and Expands etc
