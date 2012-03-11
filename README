@@ -1,3 +1,8 @@
 Shows how to create a DataServiceContext style client API for Queryable resources on an ASP.Net Web API. 
 
-Supports LINQ querying on the client and Expands etc
+Supports LINQ querying on the client and Expands etc.
+
+Full description at:
+http://blog.petegoo.com/index.php/2012/03/11/creating-a-net-queryable-client-for-asp-net-web-api-odata-services/
+and
+http://blog.petegoo.com/index.php/2012/03/11/supporting-odata-expands-for-ef-includes-in-asp-net-web-api/
