@@ -4,13 +4,11 @@ using System.Web;
 using System.Web.Http;
 using PeteGoo.WebApi.Web.Models;
 
-namespace PeteGoo.WebApi.Web.Controllers
-{
+namespace PeteGoo.WebApi.Web.Controllers {
     /// <summary>
     /// Api Controller exposing Northwind Customers and supporting expands
     /// </summary>
-    public class NorthwindController : ApiController
-    {
+    public class NorthwindController : ApiController {
         private readonly NorthwindEntities northwindEntities = new NorthwindEntities();
 
         public NorthwindController() {
@@ -19,13 +17,13 @@ namespace PeteGoo.WebApi.Web.Controllers
 
         public IQueryable<Customer> GetCustomers() {
             return northwindEntities.Customers.ProcessExpands();
-        }   
+        }
     }
 
     public static class ObjectQueryExtensions {
         public static ObjectQuery<T> ProcessExpands<T>(this ObjectSet<T> source) where T : class {
             string expandsQueryString = HttpContext.Current.Request.QueryString["$expand"];
-            if(string.IsNullOrWhiteSpace(expandsQueryString)) {
+            if (string.IsNullOrWhiteSpace(expandsQueryString)) {
                 return source;
             }
 

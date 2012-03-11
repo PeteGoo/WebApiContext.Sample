@@ -19,3 +19,4 @@ artifacts/*
 msbuild.log
 PublishProfiles/
 *.psess
+PeteGoo.WebApi.Web/App_Data/NORTHWND_log.ldf

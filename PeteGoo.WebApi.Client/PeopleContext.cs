@@ -49,6 +49,6 @@ namespace PeteGoo.WebApi.Client {
         public IQueryable<Person> People {
             get { return restContext.Query; }
         }
-    
+
     }
 }
