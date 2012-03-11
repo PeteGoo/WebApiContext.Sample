@@ -9,10 +9,10 @@ using Newtonsoft.Json;
 
 namespace PeteGoo.WebApi.Web.Infrastructure {
     public class JsonNetFormatter : MediaTypeFormatter {
-        private JsonSerializerSettings _jsonSerializerSettings;
+        private readonly JsonSerializerSettings jsonSerializerSettings;
 
         public JsonNetFormatter(JsonSerializerSettings jsonSerializerSettings) {
-            _jsonSerializerSettings = jsonSerializerSettings ?? new JsonSerializerSettings();
+            this.jsonSerializerSettings = jsonSerializerSettings ?? new JsonSerializerSettings();
 
             // Fill out the mediatype and encoding we support
             SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
@@ -33,7 +33,7 @@ namespace PeteGoo.WebApi.Web.Infrastructure {
 
         protected override Task<object> OnReadFromStreamAsync(Type type, Stream stream, HttpContentHeaders contentHeaders, FormatterContext formatterContext) {
             // Create a serializer
-            JsonSerializer serializer = JsonSerializer.Create(_jsonSerializerSettings);
+            JsonSerializer serializer = JsonSerializer.Create(jsonSerializerSettings);
 
             // Create task reading the content
             return Task.Factory.StartNew(() => {
@@ -47,7 +47,7 @@ namespace PeteGoo.WebApi.Web.Infrastructure {
 
         protected override Task OnWriteToStreamAsync(Type type, object value, Stream stream, HttpContentHeaders contentHeaders, FormatterContext formatterContext, TransportContext transportContext) {
             // Create a serializer
-            JsonSerializer serializer = JsonSerializer.Create(_jsonSerializerSettings);
+            JsonSerializer serializer = JsonSerializer.Create(jsonSerializerSettings);
 
             // Create task writing the serialized content
             return Task.Factory.StartNew(() => {
