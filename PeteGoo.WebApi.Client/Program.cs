@@ -4,7 +4,7 @@ using System.Linq;
 namespace PeteGoo.WebApi.Client {
     class Program {
         static void Main(string[] args) {
-            PrintQuery(PeopleContext.Format.Pox);
+            PrintQuery(PeopleContext.Format.Json);
             PrintQuery(PeopleContext.Format.Json);
 
             Console.ReadKey(true);

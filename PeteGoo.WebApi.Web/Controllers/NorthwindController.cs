@@ -16,7 +16,7 @@ namespace PeteGoo.WebApi.Web.Controllers {
         }
 
         public IQueryable<Customer> GetCustomers() {
-            return northwindEntities.Customers.ProcessExpands();
+            return northwindEntities.Customers;
         }
     }
 

@@ -29,6 +29,7 @@ namespace PeteGoo.WebApi.Web {
 
             configuration.Formatters.Insert(0, new JsonNetFormatter(serializerSettings));
 
+            configuration.Filters.Add(new EFExpandActionFilter());
             routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

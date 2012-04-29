@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using Linq2Rest.Provider;
 using Newtonsoft.Json;
 
@@ -14,7 +15,11 @@ namespace PeteGoo.WebApi.Client.Infrastructure {
             }
 
             public IList<T> DeserializeList(string input) {
-                return JsonConvert.DeserializeObject<IList<T>>(input);
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                IList<T> results = JsonConvert.DeserializeObject<IList<T>>(input);
+                stopwatch.Stop();
+                return results;
             }
         }
     }
