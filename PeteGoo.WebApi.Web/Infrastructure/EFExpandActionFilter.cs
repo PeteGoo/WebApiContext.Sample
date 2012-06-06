@@ -2,6 +2,7 @@
 using System.Collections.Specialized;
 using System.Data.Objects;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
@@ -30,7 +31,7 @@ namespace PeteGoo.WebApi.Web.Infrastructure {
 
             object responseObject;
 
-            actionExecutedContext.Result.TryGetObjectValue(out responseObject);
+            actionExecutedContext.Response.TryGetContentValue(out responseObject);
 
             ObjectQuery query = responseObject as ObjectQuery;
             if (query == null) {
@@ -44,7 +45,7 @@ namespace PeteGoo.WebApi.Web.Infrastructure {
                     query = info.Invoke(query, new object[]{expand}) as ObjectQuery;
                 });
 
-            actionExecutedContext.Result.TrySetObjectValue<object>(query);
+            ((ObjectContent)actionExecutedContext.Response.Content).Value = query;
         }
     }
 }
